@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sowaka — Employee Engagement & Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Sora',sans-serif;background:#fff;color:#1a1208;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+:root{
+  --rust:#8B2800;
+  --rust2:#B83A10;
+  --peach:#E8C5B0;
+  --cream:#FDF6F0;
+  --dark:#1A1208;
+  --mid:#5C4033;
+  --light:#F5EBE4;
+  --border:#E8D5C5;
+  --white:#fff;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:72px;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-logo-text{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:800;color:var(--rust);letter-spacing:-0.5px}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;font-size:0.875rem;font-weight:500;color:var(--mid);transition:color .2s}
+.nav-links a:hover{color:var(--rust)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-ghost{font-size:0.875rem;font-weight:500;color:var(--dark);text-decoration:none;padding:10px 20px;border-radius:100px;border:1.5px solid var(--border);transition:all .2s;cursor:pointer;background:transparent}
+.btn-ghost:hover{border-color:var(--rust);color:var(--rust)}
+.btn-fill{font-size:0.875rem;font-weight:600;color:#fff;text-decoration:none;padding:10px 22px;border-radius:100px;background:var(--rust);transition:background .2s;border:none;cursor:pointer}
+.btn-fill:hover{background:var(--rust2)}
+
+/* HERO */
+.hero{
+  padding:140px 64px 80px;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:64px;min-height:100vh;
+  background:var(--cream);
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:100px;padding:6px 16px;margin-bottom:28px;
+  font-size:0.78rem;font-weight:600;color:var(--rust);letter-spacing:.5px;text-transform:uppercase
+}
+.hero-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--rust);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:800;line-height:1.06;color:var(--dark);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--rust)}
+.hero-sub{font-size:1.05rem;color:var(--mid);line-height:1.72;max-width:480px;margin-bottom:36px;font-weight:300}
+.hero-actions{display:flex;gap:12px;align-items:center;margin-bottom:48px;flex-wrap:wrap}
+.hero-trust{display:flex;align-items:center;gap:14px}
+.hero-avatars{display:flex}
+.hero-av{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;background:linear-gradient(135deg,var(--rust),var(--rust2));margin-left:-10px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff}
+.hero-av:first-child{margin-left:0}
+.hero-trust-text{font-size:0.82rem;color:var(--mid);line-height:1.5}
+.hero-trust-text strong{display:block;color:var(--dark);font-weight:600;font-size:0.85rem}
+
+/* HERO VISUAL */
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.hv{border-radius:22px;overflow:hidden;position:relative;min-height:185px}
+.hv.tall{grid-row:span 2;min-height:390px}
+.hv-bg{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px}
+.hv-emoji{position:absolute;top:20px;left:20px;font-size:3rem;opacity:.9}
+.hv-tag{display:inline-block;background:rgba(255,255,255,.9);border-radius:100px;padding:5px 12px;font-size:0.72rem;font-weight:700;color:var(--rust);margin-bottom:8px;width:fit-content}
+.hv h4{font-size:0.95rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.hv-1{background:linear-gradient(160deg,#8B2800,#C04A1A)}
+.hv-2{background:linear-gradient(160deg,#C8765A,#E8A080)}
+.hv-3{background:linear-gradient(160deg,#5C4033,#8B6355)}
+.hv-4{background:linear-gradient(160deg,#D4956A,#E8C5B0)}
+
+/* MARQUEE */
+.marquee-section{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#fff}
+.marquee-label{text-align:center;padding:20px 0 6px;font-size:0.73rem;letter-spacing:2px;text-transform:uppercase;color:var(--mid);font-weight:500}
+.marquee-wrap{overflow:hidden;padding:14px 0 22px}
+.marquee-track{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:8px;padding:0 28px;white-space:nowrap;font-size:0.9rem;font-weight:600;color:var(--mid);border-right:1px solid var(--border)}
+.marquee-item:last-child{border-right:none}
+.marquee-item-icon{font-size:1.1rem}
+
+/* STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.stat{background:#fff;padding:40px 32px;text-align:center}
+.stat-n{font-family:'Fraunces',serif;font-size:3rem;font-weight:800;color:var(--rust);line-height:1;margin-bottom:8px}
+.stat-l{font-size:0.83rem;color:var(--mid);line-height:1.5}
+
+/* SHARED SECTION */
+.section{padding:96px 64px}
+.section.bg-cream{background:var(--cream)}
+.section.bg-dark{background:var(--dark)}
+.eyebrow{font-size:0.73rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:var(--rust);margin-bottom:14px;display:block}
+.section.bg-dark .eyebrow{color:var(--peach)}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--dark);line-height:1.12;margin-bottom:16px}
+.section.bg-dark .section-title{color:#fff}
+.section-sub{font-size:1rem;color:var(--mid);max-width:560px;line-height:1.72;font-weight:300}
+.section.bg-dark .section-sub{color:rgba(255,255,255,.55)}
+.section-head{margin-bottom:52px}
+
+/* TABS + ACTIVITIES */
+.act-tabs{display:flex;gap:0;margin-bottom:0;overflow-x:auto;border-bottom:2px solid var(--border)}
+.act-tab{padding:13px 24px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--mid);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap}
+.act-tab.active{color:var(--rust);border-bottom-color:var(--rust)}
+.act-tab:hover:not(.active){color:var(--dark)}
+.act-panels{margin-top:32px}
+.act-panel{display:none}
+.act-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.act-card{background:#fff;border-radius:20px;padding:28px;border:1.5px solid var(--border);display:flex;gap:18px;align-items:flex-start;transition:all .25s;cursor:default}
+.act-card:hover{border-color:var(--rust);box-shadow:0 6px 36px rgba(139,40,0,.09);transform:translateY(-3px)}
+.act-card.act-hero{grid-column:span 2;background:linear-gradient(135deg,var(--rust) 0%,var(--rust2) 100%);border:none;flex-wrap:wrap;gap:18px}
+.act-icon-wrap{width:54px;height:54px;min-width:54px;border-radius:14px;background:rgba(139,40,0,.08);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.act-card.act-hero .act-icon-wrap{background:rgba(255,255,255,.15)}
+.act-card.act-hero .act-body h3{color:#fff}
+.act-card.act-hero .act-body p{color:rgba(255,255,255,.75)}
+.act-body h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.act-body p{font-size:0.875rem;color:var(--mid);line-height:1.65}
+.act-pill{background:rgba(255,255,255,.22);color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:.5px;padding:5px 14px;border-radius:100px;white-space:nowrap;align-self:flex-start;margin-left:auto}
+
+/* PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pillar-card{background:var(--cream);border:1.5px solid var(--border);border-radius:16px;padding:26px;transition:all .25s}
+.pillar-card:hover{border-color:var(--rust);background:#fff}
+.pillar-icon{font-size:2rem;margin-bottom:14px;display:block}
+.pillar-card h3{font-size:0.92rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.pillar-card p{font-size:0.8rem;color:var(--mid);line-height:1.6}
+
+/* TESTIMONIALS */
+.test-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+.test-nav{display:flex;gap:10px}
+.test-btn{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;color:var(--dark);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.test-btn:hover{border-color:var(--rust);color:var(--rust)}
+.test-scroll{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-ms-overflow-style:none;scrollbar-width:none;padding-bottom:4px}
+.test-scroll::-webkit-scrollbar{display:none}
+.test-card{background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:30px;min-width:300px;max-width:340px;scroll-snap-align:start;flex-shrink:0}
+.test-quote-mark{font-size:1.5rem;color:var(--rust);line-height:1;margin-bottom:14px}
+.test-text{font-size:0.875rem;color:var(--dark);line-height:1.72;margin-bottom:22px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rust),var(--rust2));display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;color:#fff;flex-shrink:0}
+.test-name{font-size:0.83rem;font-weight:700;color:var(--dark)}
+.test-role{font-size:0.75rem;color:var(--mid)}
+
+/* OCCASIONS */
+.occ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.occ-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 22px;text-align:center;transition:all .3s}
+.occ-card:hover{background:rgba(232,197,176,.13);border-color:var(--peach);transform:translateY(-5px)}
+.occ-icon{font-size:2.4rem;margin-bottom:16px;display:block}
+.occ-card h3{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px}
+.occ-card p{font-size:0.8rem;color:rgba(255,255,255,.5)}
+
+/* CTA */
+.cta-wrap{text-align:center}
+.cta-wrap h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:var(--dark);line-height:1.1;margin-bottom:16px}
+.cta-wrap h2 em{font-style:italic;color:var(--rust)}
+.cta-wrap p{font-size:1rem;color:var(--mid);margin-bottom:36px;line-height:1.72;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-sub{margin-top:18px;font-size:0.82rem;color:var(--mid)}
+.cta-sub a{color:var(--rust);text-decoration:none;font-weight:600}
+
+/* FOOTER */
+footer{padding:30px 64px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);background:#fff;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:var(--rust)}
+footer p{font-size:0.8rem;color:var(--mid)}
+.footer-links{display:flex;gap:22px}
+.footer-links a{font-size:0.8rem;color:var(--mid);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--rust)}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav{padding:0 24px}
+  .nav-links,.nav-right .btn-ghost{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 24px 56px}
+  .hero-visual{display:none}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .section{padding:64px 24px}
+  .act-panel.active{grid-template-columns:1fr}
+  .act-card.act-hero{grid-column:span 1}
+  .act-pill{margin-left:0;margin-top:10px}
+  .pillars-grid{grid-template-columns:1fr 1fr}
+  .occ-grid{grid-template-columns:1fr 1fr}
+  footer{padding:24px;flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-text">Sowaka</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#occasions">Occasions</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:8473995034" class="btn-ghost">📞 8473995034</a>
+    <a href="mailto:tanvi@sowaka.fit" class="btn-fill">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="fade">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Employee Engagement Platform
+    </div>
+    <h1>Workplaces that <em>move,</em><br>connect &amp; thrive</h1>
+    <p class="hero-sub">Sowaka brings curated wellness experiences straight to your office floor — from Circuit Challenges to Sound Therapy, Kickboxing to Financial Planning. Real engagement your team genuinely looks forward to.</p>
+    <div class="hero-actions">
+      <a href="mailto:tanvi@sowaka.fit" class="btn-fill" style="padding:13px 26px;font-size:0.95rem">Book an Experience</a>
+      <a href="#activities" class="btn-ghost" style="padding:13px 26px;font-size:0.95rem">View Catalogue</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-avatars">
+        <div class="hero-av">RK</div>
+        <div class="hero-av">DH</div>
+        <div class="hero-av">TP</div>
+        <div class="hero-av">IB</div>
+        <div class="hero-av">CC</div>
+      </div>
+      <div class="hero-trust-text">
+        <strong>Trusted by 40+ companies</strong>
+        IBM, DHL, Coca-Cola, Tata Power &amp; many more
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual fade">
+    <div class="hv tall hv-1">
+      <div class="hv-emoji">🏆</div>
+      <div class="hv-bg"><div><span class="hv-tag">⭐ Most Popular</span><h4>Circuit Challenge</h4></div></div>
+    </div>
+    <div class="hv hv-2">
+      <div class="hv-emoji">🥊</div>
+      <div class="hv-bg"><h4>Kickboxing</h4></div>
+    </div>
+    <div class="hv hv-3">
+      <div class="hv-emoji">🎨</div>
+      <div class="hv-bg"><h4>Art Therapy</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT MARQUEE -->
+<section class="marquee-section" id="clients">
+  <p class="marquee-label">Companies that trust Sowaka</p>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-item-icon">🏢</span>Reckitt</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🖥️</span>IBM</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🍬</span>Wrigley</div>
+      <div class="marquee-item"><span class="marquee-item-icon">⚡</span>Tata Power</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📦</span>DHL</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🥤</span>Coca-Cola</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚛</span>DSV</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📊</span>Motilal Oswal</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🎨</span>Birla Opus Paints</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚜</span>John Deere</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🔐</span>SentinelOne</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏠</span>Oberoi Realty</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚗</span>CEAT</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📐</span>Atkins</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🎯</span>MathCo</div>
+      <div class="marquee-item"><span class="marquee-item-icon">✈️</span>TravClan</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏦</span>Aadhar Housing Finance</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💻</span>Jabil</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🌿</span>Ever Enviro</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💰</span>InCred</div>
+      <div class="marquee-item"><span class="marquee-item-icon">❤️</span>Care</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📱</span>Mavenir</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏛️</span>CGI</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📈</span>Probo</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💼</span>Xceedance</div>
+      <!-- duplicate -->
+      <div class="marquee-item"><span class="marquee-item-icon">🏢</span>Reckitt</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🖥️</span>IBM</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🍬</span>Wrigley</div>
+      <div class="marquee-item"><span class="marquee-item-icon">⚡</span>Tata Power</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📦</span>DHL</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🥤</span>Coca-Cola</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚛</span>DSV</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📊</span>Motilal Oswal</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🎨</span>Birla Opus Paints</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚜</span>John Deere</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🔐</span>SentinelOne</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏠</span>Oberoi Realty</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🚗</span>CEAT</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📐</span>Atkins</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🎯</span>MathCo</div>
+      <div class="marquee-item"><span class="marquee-item-icon">✈️</span>TravClan</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏦</span>Aadhar Housing Finance</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💻</span>Jabil</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🌿</span>Ever Enviro</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💰</span>InCred</div>
+      <div class="marquee-item"><span class="marquee-item-icon">❤️</span>Care</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📱</span>Mavenir</div>
+      <div class="marquee-item"><span class="marquee-item-icon">🏛️</span>CGI</div>
+      <div class="marquee-item"><span class="marquee-item-icon">📈</span>Probo</div>
+      <div class="marquee-item"><span class="marquee-item-icon">💼</span>Xceedance</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat fade"><div class="stat-n">40+</div><div class="stat-l">Enterprise clients across industries</div></div>
+  <div class="stat fade"><div class="stat-n">12+</div><div class="stat-l">Curated experiences in the catalogue</div></div>
+  <div class="stat fade"><div class="stat-n">9</div><div class="stat-l">Engagement pillars covered</div></div>
+  <div class="stat fade"><div class="stat-n">100%</div><div class="stat-l">On-site — we come to your office</div></div>
+</div>
+
+<!-- ACTIVITIES -->
+<section class="section bg-cream" id="activities">
+  <div class="section-head fade">
+    <span class="eyebrow">The Catalogue</span>
+    <h2 class="section-title">Experiences for <em>every kind</em> of team</h2>
+    <p class="section-sub">Every session happens at your office premises. Pick a category, pick an experience — Sowaka handles everything else.</p>
+  </div>
+  <div class="act-tabs">
+    <button class="act-tab active" data-panel="active">💪 Active &amp; Physical</button>
+    <button class="act-tab" data-panel="mind">🧘 Mind &amp; Wellbeing</button>
+    <button class="act-tab" data-panel="creative">🎨 Creative &amp; Therapeutic</button>
+    <button class="act-tab" data-panel="knowledge">📚 Health &amp; Knowledge</button>
+  </div>
+  <div class="act-panels">
+
+    <!-- ACTIVE -->
+    <div class="act-panel active" id="panel-active">
+      <div class="act-card act-hero">
+        <div class="act-icon-wrap">🏆</div>
+        <div class="act-body">
+          <h3>Circuit Challenge</h3>
+          <p>A week-long fitness programme where teams compete across daily workouts, fitness tasks, and stretching streaks, culminating in a relay-style obstacle race inspired by Hyrox and Devil Circuit. Guaranteed high point for every employee — fit or not.</p>
+        </div>
+        <span class="act-pill">⭐ Most Popular</span>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🎉</div>
+        <div class="act-body">
+          <h3>Office Olympics</h3>
+          <p>The floor is split into teams competing across physical challenges. A great way to get everyone moving — and an even better opportunity for genuine team bonding.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">💃</div>
+        <div class="act-body">
+          <h3>Grooves — Zumba &amp; Dance</h3>
+          <p>Sometimes Masala Bhangra, sometimes Bollywood fusion, sometimes team dance-offs between bays. Always creative, always inclusive. Maximum fun on the office floor.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🥊</div>
+        <div class="act-body">
+          <h3>Self Defense &amp; Kickboxing</h3>
+          <p>Self defense is about escape mindset, not fighting. The kickboxing coach brings all equipment — real kicks, real punches, real stress relief. Especially great for women.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIND -->
+    <div class="act-panel" id="panel-mind">
+      <div class="act-card act-hero">
+        <div class="act-icon-wrap">🧘</div>
+        <div class="act-body">
+          <h3>Yoga &amp; Meditation</h3>
+          <p>Sessions include guided meditation, face yoga, and breathwork — highly customised based on job roles, gamified on request. Addresses sleep issues, anxiety, energy crashes, spine pain, eye strain, and wrist strain. Proven and powerful.</p>
+        </div>
+        <span class="act-pill">🌟 Team Favourite</span>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🎶</div>
+        <div class="act-body">
+          <h3>Sound Therapy</h3>
+          <p>Singing bowls and chimes guide the brain into a state of no thoughts. Extremely relaxing after high-pressure periods. The perfect introduction to meditation for beginners.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">💚</div>
+        <div class="act-body">
+          <h3>Emotional Wellbeing</h3>
+          <p>Not a generic stress lecture. Customised to your team's specific context and stressors — employees learn to recognise negative emotions and build practical coping techniques.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🪑</div>
+        <div class="act-body">
+          <h3>Ergonomics</h3>
+          <p>A physio-led session blending tips, games, and stretches. Essential relief for the cumulative physical toll of 8+ hours of sitting at a desk every single day.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATIVE -->
+    <div class="act-panel" id="panel-creative">
+      <div class="act-card act-hero">
+        <div class="act-icon-wrap">🎨</div>
+        <div class="act-body">
+          <h3>Creative Expression — Art Workshop</h3>
+          <p>Teams paint bags, mugs, and coasters they take home or display at their desks. Time off screens, creative brain engagement, and the dopamine of completing something beautiful — all proven to meaningfully reduce stress levels.</p>
+        </div>
+        <span class="act-pill">🎭 Most Requested</span>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🏺</div>
+        <div class="act-body">
+          <h3>Pottery Workshop</h3>
+          <p>Guided wheel pottery — the experience of building something from clay with your own hands is deeply rewarding and unlike any other office activity your team has tried.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🌱</div>
+        <div class="act-body">
+          <h3>Gardening &amp; Soil Therapy</h3>
+          <p>Hands in the earth, close to nature. One of the most calming and grounding experiences available — and employees leave with something alive to care for at their desks.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🤲</div>
+        <div class="act-body">
+          <h3>Clay Sculpting</h3>
+          <p>A tactile, meditative group session where teams create clay sculptures. No experience needed — just willingness to get hands messy and minds quiet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KNOWLEDGE -->
+    <div class="act-panel" id="panel-knowledge">
+      <div class="act-card act-hero">
+        <div class="act-icon-wrap">💰</div>
+        <div class="act-body">
+          <h3>Financial Planning Workshop</h3>
+          <p>Actionable, not just gyaan. Delivered with a hands-on Excel tool, breaking financial planning into four clear steps: insurance, tracking inflow and outflow, setting objectives, and investing. Directly addresses the universal stressor — money.</p>
+        </div>
+        <span class="act-pill">🔥 High Impact</span>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🔬</div>
+        <div class="act-body">
+          <h3>Myth Buster Polling</h3>
+          <p>Health topics — nutrition, skincare, PCOS, diabetes, hypothyroidism — turned into live interactive polling. Cuts through marketing gimmicks and empowers real decisions.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">🩺</div>
+        <div class="act-body">
+          <h3>Body Scans &amp; Check-ups</h3>
+          <p>BCA scans, BP check-ups, and annual health check-ups done at your office. Nothing triggers action and healthy behaviour change like a red flag on your own reports.</p>
+        </div>
+      </div>
+      <div class="act-card">
+        <div class="act-icon-wrap">📈</div>
+        <div class="act-body">
+          <h3>Workplace Effectiveness</h3>
+          <p>Communication, collaboration, influence, and leadership — through experiential learning only. No lectures. Includes procrastination and motivation assessments to boost productivity.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section" id="pillars">
+  <div class="section-head fade">
+    <span class="eyebrow">Engagement Pillars</span>
+    <h2 class="section-title">Every experience maps to a <em>real outcome</em></h2>
+    <p class="section-sub">Nine pillars covering the complete spectrum of employee wellbeing — physical, emotional, creative, and professional growth.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card fade"><span class="pillar-icon">🏋️</span><h3>Physical Fitness</h3><p>Get teams moving through challenges that energise the body and create real bonds</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">🧠</span><h3>Emotional Wellbeing</h3><p>Customised sessions helping employees recognise and manage negative emotions</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">👩</span><h3>Women</h3><p>Dedicated experiences celebrating and empowering women professionals</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">🎯</span><h3>Leadership</h3><p>Influence, decision-making, and leadership through pure experiential learning</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">💬</span><h3>Communication</h3><p>Build collaboration and effective communication skills across the floor</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">🤝</span><h3>Team Building</h3><p>Shared challenges that forge connections no offsite can replicate</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">🎨</span><h3>Creativity</h3><p>Art, pottery, and hands-on workshops that free the mind from screens</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">❤️</span><h3>Health</h3><p>Body scans, check-ups, myth-busting — knowledge that actually drives action</p></div>
+    <div class="pillar-card fade"><span class="pillar-icon">🧘</span><h3>Yoga &amp; Meditation</h3><p>Breathwork, mindfulness, and flexibility customised to your team's job roles</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials" style="background:var(--cream)">
+  <div class="test-head fade">
+    <div>
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="section-title" style="margin-bottom:0">Don't just take our word for it</h2>
+    </div>
+    <div class="test-nav">
+      <button class="test-btn" id="btn-prev">←</button>
+      <button class="test-btn" id="btn-next">→</button>
+    </div>
+  </div>
+  <div class="test-scroll" id="test-scroll">
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">The Circuit Challenge was the most engaged I've seen our team in years. People who never exercise were cheering each other on. Absolutely brilliant.</p>
+      <div class="test-author">
+        <div class="test-avatar">SR</div>
+        <div><div class="test-name">Sneha Rajput</div><div class="test-role">HR Manager, Motilal Oswal</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Sound Therapy was something I was completely skeptical about. By the end, half the team had dozed off in the most peaceful way possible. A genuine hit.</p>
+      <div class="test-author">
+        <div class="test-avatar">AK</div>
+        <div><div class="test-name">Ankit Kapoor</div><div class="test-role">People Partner, DHL India</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">The art workshop was magical. Employees kept their paintings on desks for months. Simple, so different from typical team building, and deeply effective.</p>
+      <div class="test-author">
+        <div class="test-avatar">PD</div>
+        <div><div class="test-name">Priya Desai</div><div class="test-role">Culture Lead, Tata Power</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Financial Planning was the sleeper hit of the year. Our employees actually started SIPs the next week. The Excel tool approach made it feel immediately actionable.</p>
+      <div class="test-author">
+        <div class="test-avatar">VN</div>
+        <div><div class="test-name">Vikram Nair</div><div class="test-role">CHRO, CEAT</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">The Myth Buster session on PCOS was a revelation for our women employees. No fluff, just real evidence-based information they could actually act on immediately.</p>
+      <div class="test-author">
+        <div class="test-avatar">MS</div>
+        <div><div class="test-name">Meera Sharma</div><div class="test-role">VP HR, Reckitt</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Office Olympics turned a mundane Monday into something people talked about for weeks. Sowaka knows exactly how to read a room and make it work for everyone.</p>
+      <div class="test-author">
+        <div class="test-avatar">RJ</div>
+        <div><div class="test-name">Rohit Joshi</div><div class="test-role">HR Head, IBM India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="section bg-dark" id="occasions">
+  <div class="section-head fade">
+    <span class="eyebrow">Special Occasions</span>
+    <h2 class="section-title">Curated for the <em>moments</em> that matter</h2>
+    <p class="section-sub">Specially designed experience packages for the key calendar moments — so you're always ready to celebrate and invest in your team.</p>
+  </div>
+  <div class="occ-grid">
+    <div class="occ-card"><span class="occ-icon">🌍</span><h3>World Health Day</h3><p>7th April</p></div>
+    <div class="occ-card"><span class="occ-icon">🧘</span><h3>International Yoga Day</h3><p>21st June</p></div>
+    <div class="occ-card"><span class="occ-icon">👩</span><h3>Women's Day</h3><p>8th March</p></div>
+    <div class="occ-card"><span class="occ-icon">💚</span><h3>Mental Health Month</h3><p>October</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="contact">
+  <div class="cta-wrap fade">
+    <span class="eyebrow" style="text-align:center;display:block;margin-bottom:12px">Let's Talk</span>
+    <h2>Ready to bring <em>energy</em><br>to your office?</h2>
+    <p>From a single session to a month-long programme — we design experiences your team will genuinely look forward to. Everything happens on your floor, on your schedule.</p>
+    <div class="cta-btns">
+      <a href="mailto:tanvi@sowaka.fit" class="btn-fill" style="padding:14px 28px;font-size:1rem">Email Us Now</a>
+      <a href="tel:8473995034" class="btn-ghost" style="padding:14px 28px;font-size:1rem">Call 8473995034</a>
+    </div>
+    <p class="cta-sub">Reach Tanvi directly at <a href="mailto:tanvi@sowaka.fit">tanvi@sowaka.fit</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sowaka</div>
+  <p>© 2025 Sowaka — Employee Engagement &amp; Wellness</p>
+  <div class="footer-links">
+    <a href="mailto:tanvi@sowaka.fit">tanvi@sowaka.fit</a>
+    <a href="tel:8473995034">8473995034</a>
+    <a href="#activities">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Tabs
+document.querySelectorAll('.act-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.act-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.act-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.panel).classList.add('active');
+  });
+});
+
+// Testimonial nav
+const ts=document.getElementById('test-scroll');
+document.getElementById('btn-prev').onclick=()=>ts.scrollBy({left:-340,behavior:'smooth'});
+document.getElementById('btn-next').onclick=()=>ts.scrollBy({left:340,behavior:'smooth'});
+
+// Fade in
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('in'),i*70);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
