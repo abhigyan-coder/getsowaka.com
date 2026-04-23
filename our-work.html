@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work - Sowaka</title>
+<meta name="description" content="14 case studies across 40+ companies.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Sora',sans-serif;background:#fff;color:#1a1208;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--rust:#8B2800;--rust2:#B83A10;--peach:#E8C5B0;--cream:#FDF6F0;--dark:#1A1208;--mid:#5C4033;--light:#F5EBE4;--border:#E8D5C5;--white:#fff}
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:32px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;border-right:1px solid var(--border);padding-right:32px;margin:0}
+.nav-links a{text-decoration:none;font-size:.875rem;font-weight:500;color:var(--mid);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--rust)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-ghost{font-size:.875rem;font-weight:500;color:var(--dark);text-decoration:none;padding:10px 20px;border-radius:100px;border:1.5px solid var(--border);transition:all .2s;background:transparent}
+.btn-ghost:hover{border-color:var(--rust);color:var(--rust)}
+.btn-fill{font-size:.875rem;font-weight:600;color:#fff;text-decoration:none;padding:10px 22px;border-radius:100px;background:var(--rust);transition:background .2s;border:none;cursor:pointer}
+.btn-fill:hover{background:var(--rust2)}
+.btn-fill-lg{font-size:.95rem;padding:14px 34px;border-radius:100px;background:var(--rust);color:#fff;text-decoration:none;font-weight:600;transition:background .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer}
+.btn-fill-lg:hover{background:var(--rust2)}
+footer{display:flex;align-items:center;justify-content:space-between;padding:28px 64px;background:var(--dark);color:rgba(255,255,255,.5);font-size:.8rem;gap:24px;flex-wrap:wrap}
+.footer-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:800;color:var(--peach);margin-right:8px}
+.footer-links{display:flex;gap:24px;align-items:center}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem;transition:color .2s}
+.footer-links a:hover{color:var(--peach)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.fade.in{opacity:1;transform:none}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.ow-hero{padding:140px 64px 96px;background:var(--dark);text-align:center;position:relative;overflow:hidden}
+.ow-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(139,40,0,.35) 0%,transparent 70%);pointer-events:none}
+.ow-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 18px;margin-bottom:32px;font-size:.73rem;font-weight:600;color:var(--peach);letter-spacing:.8px;text-transform:uppercase}
+.ow-hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(2.8rem,5.5vw,4.4rem);line-height:1.05;color:#fff;margin-bottom:24px}
+.ow-hero h1 em{font-style:italic;color:var(--peach)}
+.ow-hero-sub{font-size:clamp(.92rem,1.4vw,1.05rem);color:rgba(255,255,255,.5);max-width:540px;margin:0 auto 40px;line-height:1.7;font-weight:300}
+.ow-hero-stats{display:flex;justify-content:center;gap:48px;margin-top:56px;padding-top:44px;border-top:1px solid rgba(255,255,255,.1)}
+.ow-stat-n{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:800;color:var(--peach);line-height:1}
+.ow-stat-l{font-size:.75rem;color:rgba(255,255,255,.38);margin-top:7px;font-weight:300;letter-spacing:.2px}
+.ow-filters{background:var(--cream);padding:36px 64px 0;border-bottom:1px solid var(--border)}
+.ow-filter-inner{display:flex;gap:10px;flex-wrap:wrap;padding-bottom:28px}
+.ow-filter-btn{padding:8px 20px;border-radius:100px;border:1.5px solid var(--border);background:#fff;font-size:.78rem;font-weight:600;color:var(--mid);cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif}
+.ow-filter-btn:hover,.ow-filter-btn.active{background:var(--rust);color:#fff;border-color:var(--rust)}
+.ow-grid-section{padding:60px 64px 100px;background:var(--cream)}
+.ow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ow-card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;display:flex;flex-direction:column}
+.ow-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(139,40,0,.1)}
+.ow-card.hidden{display:none}
+.ow-card-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.ow-card-img-placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--light) 0%,var(--peach) 100%);display:flex;align-items:center;justify-content:center;font-size:2.8rem}
+.ow-card-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.ow-card-tag{display:inline-block;padding:4px 12px;border-radius:100px;font-size:.67rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px;border:1.5px solid}
+.tag-culture{color:#8B2800;border-color:#8B2800;background:rgba(139,40,0,.07)}
+.tag-physical{color:#1A5700;border-color:#1A5700;background:rgba(26,87,0,.07)}
+.tag-mental{color:#1A3A5C;border-color:#1A3A5C;background:rgba(26,58,92,.07)}
+.tag-nutrition{color:#8B5A00;border-color:#8B5A00;background:rgba(139,90,0,.07)}
+.tag-financial{color:#5C1A8B;border-color:#5C1A8B;background:rgba(92,26,139,.07)}
+.ow-card-title{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:800;color:var(--dark);margin-bottom:8px;line-height:1.25}
+.ow-card-clients{font-size:.73rem;color:var(--mid);font-weight:500;margin-bottom:12px;opacity:.65}
+.ow-card-impact{font-size:.82rem;color:var(--mid);line-height:1.58;flex:1}
+.ow-card-cta{margin-top:20px;display:flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;color:var(--rust);transition:gap .2s}
+.ow-card:hover .ow-card-cta{gap:10px}
+.ow-modal-overlay{position:fixed;inset:0;background:rgba(26,18,8,.72);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:24px;backdrop-filter:blur(8px)}
+.ow-modal-overlay.open{opacity:1;pointer-events:all}
+.ow-modal-wrap{position:relative;max-width:720px;width:100%}
+.ow-modal{background:#fff;border-radius:24px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(28px);transition:transform .3s ease;scrollbar-width:thin}
+.ow-modal-overlay.open .ow-modal{transform:none}
+.ow-modal-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:24px 24px 0 0;display:block}
+.ow-modal-img-placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--light),var(--peach));border-radius:24px 24px 0 0;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.ow-modal-close{position:absolute;top:-16px;right:-16px;background:#fff;border:1px solid var(--border);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.ow-modal-close:hover{background:var(--rust);color:#fff;border-color:var(--rust)}
+.ow-modal-body{padding:36px 40px 44px}
+.ow-modal-tag{margin-bottom:14px}
+.ow-modal-title{font-family:'Fraunces',serif;font-size:1.65rem;font-weight:800;color:var(--dark);margin-bottom:6px;line-height:1.18}
+.ow-modal-clients{font-size:.78rem;color:var(--mid);opacity:.6;margin-bottom:32px;font-weight:500}
+.ow-case-block{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.ow-case-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ow-case-label{font-size:.67rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--rust);margin-bottom:10px;display:block}
+.ow-case-text{font-size:.9rem;color:var(--mid);line-height:1.72;font-weight:300}
+.ow-impact-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(232,213,197,.5)}
+.ow-impact-item:last-child{border-bottom:none}
+.ow-impact-dot{width:7px;height:7px;background:var(--rust);border-radius:50%;margin-top:7px;flex-shrink:0}
+.ow-impact-txt{font-size:.88rem;color:var(--mid);line-height:1.62}
+.ow-insight{background:var(--dark);padding:96px 64px;text-align:center;position:relative;overflow:hidden}
+.ow-insight::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 100%,rgba(139,40,0,.22) 0%,transparent 70%);pointer-events:none}
+.ow-insight h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(1.9rem,3.2vw,2.85rem);color:#fff;line-height:1.12;margin-bottom:18px}
+.ow-insight h2 em{font-style:italic;color:var(--peach)}
+.ow-insight-sub{font-size:.97rem;color:rgba(255,255,255,.45);max-width:560px;margin:0 auto 60px;line-height:1.68;font-weight:300}
+.ow-insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:940px;margin:0 auto;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden}
+.ow-insight-col{padding:40px 36px}
+.ow-insight-col-bad{background:rgba(255,255,255,.03)}
+.ow-insight-col-good{background:rgba(139,40,0,.13)}
+.ow-insight-col-head{font-size:.67rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ow-insight-col-bad .ow-insight-col-head{color:rgba(255,255,255,.32)}
+.ow-insight-col-good .ow-insight-col-head{color:var(--peach)}
+.ow-insight-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.ow-insight-icon{font-size:.88rem;margin-top:2px;flex-shrink:0}
+.ow-insight-text{font-size:.86rem;line-height:1.62;font-weight:300}
+.ow-insight-col-bad .ow-insight-text{color:rgba(255,255,255,.42)}
+.ow-insight-col-good .ow-insight-text{color:rgba(255,255,255,.78)}
+.ow-cta{padding:96px 64px;text-align:center;background:var(--cream)}
+.ow-cta h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(1.9rem,3.2vw,2.7rem);color:var(--dark);margin-bottom:16px;line-height:1.14}
+.ow-cta h2 em{font-style:italic;color:var(--rust)}
+.ow-cta-sub{font-size:.97rem;color:var(--mid);max-width:460px;margin:0 auto 40px;line-height:1.68;font-weight:300}
+@media(max-width:960px){.nav{padding:0 28px}.nav-links{display:none}.ow-hero{padding:120px 28px 80px}.ow-hero-stats{gap:28px}.ow-filters,.ow-grid-section,.ow-insight,.ow-cta{padding-left:28px;padding-right:28px}.ow-grid{grid-template-columns:1fr 1fr}.ow-insight-grid{grid-template-columns:1fr}footer{padding:24px 28px;flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+@media(max-width:640px){.ow-grid{grid-template-columns:1fr}.ow-hero-stats{flex-wrap:wrap;justify-content:center;gap:28px}.ow-modal-body{padding:24px 24px 32px}.ow-modal-title{font-size:1.3rem}.ow-modal-close{top:12px;right:12px;position:fixed}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index (1) Header Fixed update 1.html" class="nav-logo">
+    <img src="sowaka-logo.png" alt="Sowaka" style="height:36px;width:auto;display:block">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index (1) Header Fixed update 1.html#activities">Activities</a></li>
+      <li><a href="our-work.html" class="active">Our Work</a></li>
+      <li><a href="index (1) Header Fixed update 1.html#testimonials">Testimonials</a></li>
+      <li><a href="index (1) Header Fixed update 1.html#occasions">Occasions</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:8473995034" class="btn-ghost">&#128222; 8473995034</a>
+      <a href="mailto:tanvi@sowaka.fit" class="btn-fill">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<section class="ow-hero">
+  <div class="ow-hero-badge fade">Case Studies from the Field</div>
+  <h1 class="fade">Proof of work.<br><em>Not promises.</em></h1>
+  <p class="ow-hero-sub fade">Real engagements. Real outcomes. Across 40+ companies &mdash; from startups to enterprise &mdash; we build culture systems that compound, not campaigns that fade.</p>
+  <a href="mailto:tanvi@sowaka.fit" class="btn-fill-lg fade">Build Your Culture System &rarr;</a>
+  <div class="ow-hero-stats fade">
+    <div><div class="ow-stat-n">40+</div><div class="ow-stat-l">Companies across industries</div></div>
+    <div><div class="ow-stat-n">14</div><div class="ow-stat-l">Case studies documented</div></div>
+    <div><div class="ow-stat-n">6+</div><div class="ow-stat-l">Months avg. engagement</div></div>
+    <div><div class="ow-stat-n">9</div><div class="ow-stat-l">Engagement pillars delivered</div></div>
+  </div>
+</section>
+
+<div class="ow-filters">
+  <div class="ow-filter-inner">
+    <button class="ow-filter-btn active" data-filter="all">All Work</button>
+    <button class="ow-filter-btn" data-filter="culture">Culture Systems</button>
+    <button class="ow-filter-btn" data-filter="physical">Physical Wellness</button>
+    <button class="ow-filter-btn" data-filter="mental">Mental Wellbeing</button>
+    <button class="ow-filter-btn" data-filter="nutrition">Health &amp; Nutrition</button>
+    <button class="ow-filter-btn" data-filter="financial">Financial Wellbeing</button>
+  </div>
+</div>
+
+<section class="ow-grid-section">
+<div class="ow-grid" id="ow-grid">
+
+  <div class="ow-card fade" data-category="physical" data-id="1">
+    <img class="ow-card-img" src="Self Defence&KickboxingPhoto.jpeg" alt="Self Defense" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#129354;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-physical">Physical Wellness</span>
+      <h3 class="ow-card-title">Self-Defense + High-Energy Kickboxing</h3>
+      <p class="ow-card-clients">GfK &middot; Perian &middot; Coca-Cola</p>
+      <p class="ow-card-impact">Highest-participation session of the year &mdash; including employees who never attend activities.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="culture" data-id="2">
+    <div class="ow-card-img-placeholder">&#128666;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-culture">Culture System</span>
+      <h3 class="ow-card-title">6-Month Ongoing Engagement &mdash; DHL</h3>
+      <p class="ow-card-clients">DHL &middot; Pan-India Metro Offices</p>
+      <p class="ow-card-impact">Compounding engagement across offices &mdash; trusted enough to arrange grief counseling the next day.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="nutrition" data-id="3">
+    <img class="ow-card-img" src="HealthPhoto.jpg" alt="Nutrition Camps" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#129367;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-nutrition">Health &amp; Nutrition</span>
+      <h3 class="ow-card-title">40+ BCA + Nutrition Camps</h3>
+      <p class="ow-card-clients">SD Analytics &middot; MathCo &middot; AT&amp;T &middot; NatWest &middot; DSV</p>
+      <p class="ow-card-impact">One-on-one nutritionist access at work &mdash; reaching people who'd never seek help on their own.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="culture" data-id="4">
+    <img class="ow-card-img" src="yoga&meditationphoto.jpeg" alt="21-Day Yoga" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#129496;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-culture">Habit Formation</span>
+      <h3 class="ow-card-title">21-Day Yoga Series &mdash; John Deere</h3>
+      <p class="ow-card-clients">John Deere &middot; 3 Plants, Pune</p>
+      <p class="ow-card-impact">Sustained daily participation across 21 days. Employees built consistent morning routines &mdash; real behaviour change.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="mental" data-id="5">
+    <img class="ow-card-img" src="PotteryWorkshopImage.jpg" alt="Art Therapy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#127912;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-mental">Mental Wellbeing</span>
+      <h3 class="ow-card-title">Art Therapy for Year-End Reflection</h3>
+      <p class="ow-card-clients">UB Group &middot; Pan-India Offices</p>
+      <p class="ow-card-impact">Employees began sharing openly with each other &mdash; conversations no workshop agenda could engineer.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="culture" data-id="6">
+    <div class="ow-card-img-placeholder">&#128187;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-culture">L&amp;D Integration</span>
+      <h3 class="ow-card-title">Workshop Series + Learning Platform &mdash; CGI</h3>
+      <p class="ow-card-clients">CGI</p>
+      <p class="ow-card-impact">High virtual engagement. The wealth management Q&amp;A turned into a live market debate &mdash; HR loved it.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="mental" data-id="7">
+    <img class="ow-card-img" src="Soundtherapyphoto.jpeg" alt="Sound Meditation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#127925;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-mental">Mental Wellbeing</span>
+      <h3 class="ow-card-title">Sound Meditation for Deep Reset</h3>
+      <p class="ow-card-clients">Zyla &middot; Mars</p>
+      <p class="ow-card-impact">After the session, employees couldn't speak. The calm was visible. Clients called it the most unique experience they'd offered.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="culture" data-id="8">
+    <img class="ow-card-img" src="CircuitChallengePhoto.jpeg" alt="Circuit Challenge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#127947;&#65039;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-culture">Culture System</span>
+      <h3 class="ow-card-title">15-Day Circuit Challenge &mdash; Convrse</h3>
+      <p class="ow-card-clients">Convrse Spaces</p>
+      <p class="ow-card-impact">Highest-participation initiative in company history. Still talked about a year later. Now an annual event.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="physical" data-id="9">
+    <img class="ow-card-img" src="yoga&meditationphoto.jpeg" alt="Yoga Day" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ow-card-img-placeholder" style="display:none">&#127807;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-physical">Physical Wellness</span>
+      <h3 class="ow-card-title">Yoga Day Across 30+ Organisations</h3>
+      <p class="ow-card-clients">InCred &middot; Probo &middot; Mavenir &middot; Birla Paints + 26 more</p>
+      <p class="ow-card-impact">Custom formats per company &mdash; from gamified challenges to shop-floor sessions. Designed to maximise participation.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="nutrition" data-id="10">
+    <div class="ow-card-img-placeholder">&#128300;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-nutrition">Health &amp; Nutrition</span>
+      <h3 class="ow-card-title">Cutting Through Nutrition Noise</h3>
+      <p class="ow-card-clients">Probo &middot; BeatRoute</p>
+      <p class="ow-card-impact">Participants stayed back nearly two hours &mdash; voluntarily. One of our highest-rated formats ever delivered.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="mental" data-id="11">
+    <div class="ow-card-img-placeholder">&#129504;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-mental">Mental Wellbeing</span>
+      <h3 class="ow-card-title">Context-Led Emotional Wellbeing</h3>
+      <p class="ow-card-clients">Tata Power &middot; IBM &middot; Coca-Cola</p>
+      <p class="ow-card-impact">Tata Power came back for a follow-up. Employees said it was "far more relevant" than any generic stress session before.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="physical" data-id="12">
+    <div class="ow-card-img-placeholder">&#129681;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-physical">Physical Wellness</span>
+      <h3 class="ow-card-title">Ergonomics &mdash; Designed for the Audience</h3>
+      <p class="ow-card-clients">Probo &middot; DHL &middot; Manufacturing Plants</p>
+      <p class="ow-card-impact">Employees who didn't plan to attend joined after seeing the energy. Ergonomics doesn't have to be a snooze fest.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="physical" data-id="13">
+    <div class="ow-card-img-placeholder">&#128131;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-physical">Physical Wellness</span>
+      <h3 class="ow-card-title">Zumba, Dance-Offs &amp; Masala Bhangra</h3>
+      <p class="ow-card-clients">CARE &middot; Mars &middot; SG Analytics + more</p>
+      <p class="ow-card-impact">Always inclusive, always high-energy. Genuine fun brought to the floor &mdash; not performed wellness.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+  <div class="ow-card fade" data-category="financial" data-id="14">
+    <div class="ow-card-img-placeholder">&#128202;</div>
+    <div class="ow-card-body">
+      <span class="ow-card-tag tag-financial">Financial Wellbeing</span>
+      <h3 class="ow-card-title">Financial Planning &mdash; From Stress to Action</h3>
+      <p class="ow-card-clients">MathCo &middot; BeatRoute &middot; Convrse.ai</p>
+      <p class="ow-card-impact">Employees opened one-on-one advisory slots. Many brought their partners. Money went from a source of stress to a plan.</p>
+      <div class="ow-card-cta">Read case study &rarr;</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="ow-insight">
+  <span class="eyebrow fade" style="color:var(--peach);margin-bottom:18px">The Sowaka POV</span>
+  <h2 class="fade">Why most engagement<br><em>stops working</em> after session one</h2>
+  <p class="ow-insight-sub fade">One great event builds a memory. Culture requires repetition, design, and compounding trust &mdash; not another calendar moment.</p>
+  <div class="ow-insight-grid fade">
+    <div class="ow-insight-col ow-insight-col-bad">
+      <div class="ow-insight-col-head">Traditional Engagement</div>
+      <div class="ow-insight-item"><span class="ow-insight-icon">&#10007;</span><p class="ow-insight-text">One-off workshops, no follow-up, no continuity</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon">&#10007;</span><p class="ow-insight-text">Generic content not designed for your team's reality</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon">&#10007;</span><p class="ow-insight-text">Sessions optimised for HR reporting, not employee impact</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon">&#10007;</span><p class="ow-insight-text">Vendors who disappear after the invoice is paid</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon">&#10007;</span><p class="ow-insight-text">Participation driven by obligation, not genuine interest</p></div>
+    </div>
+    <div class="ow-insight-col ow-insight-col-good">
+      <div class="ow-insight-col-head">The Sowaka System</div>
+      <div class="ow-insight-item"><span class="ow-insight-icon" style="color:var(--peach)">&#10003;</span><p class="ow-insight-text">Structured programmes designed to build habits, not just memories</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon" style="color:var(--peach)">&#10003;</span><p class="ow-insight-text">Context-first design &mdash; every session built around your team's real challenges</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon" style="color:var(--peach)">&#10003;</span><p class="ow-insight-text">Long-term visibility into what's working, what to do next</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon" style="color:var(--peach)">&#10003;</span><p class="ow-insight-text">Trusted by DHL to arrange psychologist-led grief counseling the very next day</p></div>
+      <div class="ow-insight-item"><span class="ow-insight-icon" style="color:var(--peach)">&#10003;</span><p class="ow-insight-text">High participation because sessions are actually worth showing up to</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ow-cta">
+  <span class="eyebrow fade">Ready to start?</span>
+  <h2 class="fade">Build a culture system that<br><em>compounds over time.</em></h2>
+  <p class="ow-cta-sub fade">Not a one-off activity. Not a wellness vendor. A partner who stays, measures, and builds &mdash; alongside your team.</p>
+  <a href="mailto:tanvi@sowaka.fit" class="btn-fill-lg fade">Build Your Culture System &rarr;</a>
+</section>
+
+<footer>
+  <div>
+    <span class="footer-logo">Sowaka</span>
+    <span>&copy; 2025 Sowaka &mdash; Employee Engagement &amp; Wellness</span>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:tanvi@sowaka.fit">tanvi@sowaka.fit</a>
+    <a href="tel:8473995034">8473995034</a>
+    <a href="index (1) Header Fixed update 1.html#activities">Services</a>
+    <a href="our-work.html">Our Work</a>
+  </div>
+</footer>
+
+<div class="ow-modal-overlay" id="ow-modal-overlay">
+  <div class="ow-modal-wrap">
+    <button class="ow-modal-close" id="ow-modal-close">&#10005;</button>
+    <div class="ow-modal" id="ow-modal"></div>
+  </div>
+</div>
+<script>
+const cases = {
+  1: {
+    title: 'Self-Defense + High-Energy Kickboxing',
+    tagHtml: '<span class="ow-card-tag tag-physical">Physical Wellness</span>',
+    clients: 'GfK &middot; Perian &middot; Coca-Cola',
+    img: 'Self Defence&KickboxingPhoto.jpeg', imgEmoji: '&#129354;',
+    ask: "Clients wanted a powerful Women's Day / Independence Day session &mdash; something genuinely empowering, not symbolic. No talks. No token gestures.",
+    did: "We were upfront: real self-defense skills can't be built in one hour. So we focused on what could &mdash; mindset, situational awareness, realistic escape techniques, and understanding how strength plays a role in safety.<br><br>We followed it with a high-energy kickboxing experience using full pads and equipment. Everyone punched, kicked, and felt their power.",
+    impact: ['Highest participation of any session that quarter &mdash; including people who never usually show up.', 'Employees left feeling genuinely strong and confident, not just temporarily motivated.', 'Clients consistently ranked it as one of their most energising and memorable sessions.']
+  },
+  2: {
+    title: '6-Month Ongoing Engagement &mdash; DHL',
+    tagHtml: '<span class="ow-card-tag tag-culture">Culture System</span>',
+    clients: 'DHL &middot; Pan-India Metro Offices',
+    img: null, imgEmoji: '&#128666;',
+    ask: "DHL wanted long-term physical wellbeing support across all metro offices. The brief: stay consistent, build engagement, avoid one-off spikes.",
+    did: "Monthly engagements ran across all offices for six months &mdash; BCA and nutrition camps, self-defense workshops, Zumba, desk yoga, and ergonomic sessions.<br><br>We also ran virtual sessions on niche topics &mdash; laughter yoga, skincare &mdash; driven by employee interest, not HR assumptions.",
+    impact: ['Consistent engagement over six months created compounding trust and participation across offices.', 'DHL involved us in a sensitive situation &mdash; when there was a loss in the organisation, we arranged psychologist-led grief counseling the very next day.', "That level of trust doesn't come from a vendor relationship. It comes from being embedded in the team's fabric."]
+  },
+  3: {
+    title: '40+ BCA + Nutrition Camps',
+    tagHtml: '<span class="ow-card-tag tag-nutrition">Health &amp; Nutrition</span>',
+    clients: 'SD Analytics &middot; MathCo &middot; AT&amp;T &middot; NatWest &middot; DSV',
+    img: 'HealthPhoto.jpg', imgEmoji: '&#129367;',
+    ask: "Often the first thing clients request when starting an engagement programme. Works especially well for employees over 30 and teams who can't make time for long workshops.",
+    did: "BCA body composition scan measuring hydration, muscle mass, and visceral fat &mdash; key long-term health indicators.<br><br>AI-based diet analysis using food logs to surface patterns and gaps, followed by a one-on-one nutritionist consultation that ties both together into personalised guidance.",
+    impact: ['The scan and AI analysis worked as eye-openers &mdash; making nutritional advice actually land instead of being ignored.', "Many employees got their diets addressed for the first time &mdash; people who'd never pay for or visit a nutritionist on their own.", 'The biggest value came from counselling, not meal plans &mdash; breaking the myth that poor eating is only a time problem.']
+  },
+  4: {
+    title: '21-Day Yoga Series &mdash; John Deere',
+    tagHtml: '<span class="ow-card-tag tag-culture">Habit Formation</span>',
+    clients: 'John Deere &middot; 3 Manufacturing Plants, Pune',
+    img: 'yoga&meditationphoto.jpeg', imgEmoji: '&#129496;',
+    ask: "John Deere didn't want a Yoga Day celebration or a one-off workshop. They wanted something that would actually build a habit and deliver lasting value.",
+    did: "A 21-day virtual yoga series running every morning at 6:30 AM &mdash; structured to gradually build flexibility, introduce different yoga forms, and cover breathing and meditation.<br><br>The programme closed with on-site sessions across their three Pune plants.",
+    impact: ['Sustained participation across all 21 days &mdash; not just the first week.', 'Employees reported higher energy levels and better focus throughout the day.', "Many built a consistent morning routine anchored to the series &mdash; that's real behaviour change."]
+  },
+  5: {
+    title: 'Art Therapy for Year-End Reflection',
+    tagHtml: '<span class="ow-card-tag tag-mental">Mental Wellbeing</span>',
+    clients: 'UB Group &middot; Pan-India Offices',
+    img: 'PotteryWorkshopImage.jpg', imgEmoji: '&#127912;',
+    ask: "UB wanted employees to pause and reflect on the year in December &mdash; something meaningful and introspective, not another presentation or panel discussion.",
+    did: "Art therapy sessions across pan-India offices, led by mental health experts. Using simple creative prompts, employees were guided to reflect on the year and express their thoughts on paper.",
+    impact: ['Employees got genuine space to process the year &mdash; rare in any workplace context.', 'What surprised us: people began sharing stories with each other spontaneously, without prompting.', 'As others saw colleagues colouring and opening up, more joined &mdash; creating real cross-team connection that no team-building exercise could force.']
+  },
+  6: {
+    title: 'Workshop Series + Learning Platform &mdash; CGI',
+    tagHtml: '<span class="ow-card-tag tag-culture">L&amp;D Integration</span>',
+    clients: 'CGI',
+    img: null, imgEmoji: '&#128187;',
+    ask: "CGI wanted a workshop series that employees would actually engage with in a virtual format &mdash; and that would add value to their existing learning platform.",
+    did: "After detailed discussions, we curated sessions on breathing techniques, wealth management, chair yoga, and nutrition for immunity.<br><br>We specifically selected experts who were not just strong in their domain but excellent at virtual engagement. Sessions moved straight into ice-breakers &mdash; no dead air.",
+    impact: ['Engagement stayed high throughout, despite being fully virtual.', 'The wealth management session triggered a live market debate in Q&amp;A &mdash; employees and the financial expert went deep on how markets would behave.', 'HR specifically appreciated the session going beyond expected scope &mdash; into territory employees actually cared about.']
+  },
+  7: {
+    title: 'Sound Meditation for Deep Reset',
+    tagHtml: '<span class="ow-card-tag tag-mental">Mental Wellbeing</span>',
+    clients: 'Zyla &middot; Mars',
+    img: 'Soundtherapyphoto.jpeg', imgEmoji: '&#127925;',
+    ask: "Zyla needed something calming after their highest-traction workday. Mars needed it during an offsite, scheduled after a late-night party. Both asks were identical: help employees truly unwind.",
+    did: "We recommended sound meditation &mdash; the only format where employees just need to lie down or sit comfortably and listen. Sound therapy is effective even for people who have never meditated before.",
+    impact: ['The impact was immediate and visible. After the session, employees found it hard to speak.', 'The calm was noticeable &mdash; not just reported, but present in the room.', "Clients described it as one of the most unique and genuinely relaxing experiences they'd offered their teams."]
+  },
+  8: {
+    title: '15-Day Circuit Challenge &mdash; Convrse',
+    tagHtml: '<span class="ow-card-tag tag-culture">Culture System</span>',
+    clients: 'Convrse Spaces',
+    img: 'CircuitChallengePhoto.jpeg', imgEmoji: '&#127947;&#65039;',
+    ask: "Convrse leadership believed deeply in fitness as a cultural lever &mdash; not passive wellness. They wanted something competitive, high-energy, with real stakes and a real finish line.",
+    did: "A 15-day fitness challenge with team-vs-team competition across daily workouts, fitness tasks, and stretching streaks &mdash; all earning points.<br><br>The challenge culminated in a relay-style obstacle race inspired by Hyrox and Devil Circuit formats &mdash; giving the programme a clear build and a strong, memorable finish.",
+    impact: ['Highest participation and recall initiative the company has ever run.', 'A year later, employees still reference it in the office.', 'So successful it is now a recurring annual event &mdash; the definition of a culture system, not a campaign.']
+  },
+  9: {
+    title: 'Yoga Day Across 30+ Organisations',
+    tagHtml: '<span class="ow-card-tag tag-physical">Physical Wellness</span>',
+    clients: 'InCred &middot; Probo &middot; Convrse &middot; Mavenir &middot; Birla Paints &middot; Jabir &middot; Luminous + 25 more',
+    img: 'yoga&meditationphoto.jpeg', imgEmoji: '&#127807;',
+    ask: "Helping 30+ companies deliver Yoga Day pan-India in ways that fit their culture &mdash; from enterprise offices to manufacturing plants, startups to mid-market.",
+    did: "InCred: Customised annually across 6 departments for two consecutive years.<br><br>John Deere: A 21-day virtual series building to on-site sessions.<br><br>Probo &amp; Convrse: Fully gamified formats with team competition.<br><br>Mavenir, Infogain, Birla Paints, Pedigree, Luminous: Clean, high-quality standard sessions &mdash; because a well-run session is powerful on its own.",
+    impact: ['Strong ice-breakers pull in maximum participation before the first pose.', 'Flow covers spine reset, eye and wrist strain relief, and breathwork for sleep and anxiety.', 'Every session closes with guided meditation &mdash; employees leave calmer and pain-free, not just stretched.']
+  },
+  10: {
+    title: 'Cutting Through Nutrition Noise',
+    tagHtml: '<span class="ow-card-tag tag-nutrition">Health &amp; Nutrition</span>',
+    clients: 'Probo &middot; BeatRoute',
+    img: null, imgEmoji: '&#128300;',
+    ask: "Smart, tech-savvy teams overwhelmed by conflicting advice and marketing gimmicks. They wanted nutrition content that went beyond basic theory &mdash; actionable and engaging.",
+    did: "Opened with Heads Up &mdash; Nutrition Edition, using games to pull people in from the start.<br><br>Used DIY AI prompts to analyse participants' actual diets based on their lifestyle and needs.<br><br>Live polls to debunk popular food trends in real-time.<br><br>Hands-on label-reading segment using packaged items employees brought from home.",
+    impact: ['Participants stayed back nearly two hours &mdash; voluntarily and actively engaged.', 'One of our highest-rated nutrition formats across all clients.', 'Sparked genuine interest in food choices that lasted well beyond the session.']
+  },
+  11: {
+    title: 'Context-Led Emotional Wellbeing',
+    tagHtml: '<span class="ow-card-tag tag-mental">Mental Wellbeing</span>',
+    clients: 'Tata Power &middot; IBM &middot; Coca-Cola',
+    img: null, imgEmoji: '&#129504;',
+    ask: "When companies ask for emotional wellbeing sessions, we ask why first. These sessions only create impact when they address the real challenge &mdash; not the generic one HR approved.",
+    did: "Tata Power: Emotional wellbeing specifically for men &mdash; a topic routinely ignored in workplace wellness.<br><br>IBM: Physical manifestations of stress &mdash; how it shows up in the body, not just the mind.<br><br>Coca-Cola: Practical tools to cope with stress in daily work life.",
+    impact: ['Employees said these sessions were "far more relevant" than any generic stress workshop attended before.', 'HR received initial pushback about our diagnostic questions &mdash; and later thanked us for insisting.', "Tata Power came back for a follow-up on how stress shows up in people around us &mdash; a session nobody expected to become a request."]
+  },
+  12: {
+    title: 'Ergonomics &mdash; Designed for the Audience',
+    tagHtml: '<span class="ow-card-tag tag-physical">Physical Wellness</span>',
+    clients: 'Probo &middot; DHL &middot; Manufacturing Plants',
+    img: null, imgEmoji: '&#129681;',
+    ask: "Ergonomics only works when it's designed for the right audience. Without that design, it becomes a snooze fest &mdash; and everyone in the room knows it.",
+    did: "Manufacturing plants: We mapped working conditions and movement on the shop floor before designing a single slide. The session was built on their reality.<br><br>IT teams at Probo and DHL: We made ergonomics active and gamified &mdash; knowing a static talk would lose the room in the first ten minutes.",
+    impact: ["Employees who didn't plan to attend joined after seeing the energy in the room.", 'Participation was the metric that told the real story &mdash; not feedback forms.', "Demonstrated that the barrier to healthy habits is rarely knowledge &mdash; it's format and context."]
+  },
+  13: {
+    title: 'Zumba, Dance-Offs &amp; Masala Bhangra',
+    tagHtml: '<span class="ow-card-tag tag-physical">Physical Wellness</span>',
+    clients: 'CARE &middot; Mars &middot; SG Analytics + more',
+    img: null, imgEmoji: '&#128131;',
+    ask: "Clients want a light, inclusive session &mdash; especially around festivals. The goal: bring the floor alive, include everyone, and make it genuinely fun.",
+    did: "We're creative with Zumba. Sometimes it's Masala Bhangra; sometimes Bollywood fusion; sometimes a team dance-off between bays. The format adapts to the room, the team, and the moment.<br><br>The common thread: inclusive enough that everyone joins, and high-energy enough that nobody wants to leave.",
+    impact: ['Genuine fun brought to the floor &mdash; not performed wellness, but actual joy.', "Inclusive by design &mdash; draws in people who don't think of themselves as active.", 'Creates cross-team moments that people reference long after the session ends.']
+  },
+  14: {
+    title: 'Financial Planning &mdash; From Stress to Action',
+    tagHtml: '<span class="ow-card-tag tag-financial">Financial Wellbeing</span>',
+    clients: 'MathCo &middot; BeatRoute &middot; Convrse.ai',
+    img: null, imgEmoji: '&#128202;',
+    ask: "Companies wanted to address one of the biggest everyday stressors &mdash; money. The ask: something actionable that motivates employees to actually start, not just nod along to theory.",
+    did: "Delivered with a hands-on Excel financial planning tool &mdash; employees built their own plan during the session.<br><br>Four-step framework: insurance &rarr; tracking inflow and outflow &rarr; setting objectives &rarr; investing. Simple enough to start that same day.",
+    impact: ['Employees used the sheet live during the session, asking how to apply it to their actual finances.', 'One-on-one advisory slots were opened post-session &mdash; demand exceeded supply.', 'Many employees brought their partners. Money went from a source of stress to a shared plan.']
+  }
+};
+
+function openModal(id) {
+  const c = cases[id];
+  if (!c) return;
+  const modal = document.getElementById('ow-modal');
+  const imgHtml = c.img
+    ? `<img class="ow-modal-img" src="${c.img}" alt="${c.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ow-modal-img-placeholder" style="display:none">${c.imgEmoji}</div>`
+    : `<div class="ow-modal-img-placeholder">${c.imgEmoji}</div>`;
+  const impactHtml = c.impact.map(i => `<div class="ow-impact-item"><div class="ow-impact-dot"></div><p class="ow-impact-txt">${i}</p></div>`).join('');
+  modal.innerHTML = `
+    ${imgHtml}
+    <div class="ow-modal-body">
+      <div class="ow-modal-tag">${c.tagHtml}</div>
+      <h2 class="ow-modal-title">${c.title}</h2>
+      <p class="ow-modal-clients">${c.clients}</p>
+      <div class="ow-case-block">
+        <span class="ow-case-label">Client Ask</span>
+        <p class="ow-case-text">${c.ask}</p>
+      </div>
+      <div class="ow-case-block">
+        <span class="ow-case-label">What We Did</span>
+        <p class="ow-case-text">${c.did}</p>
+      </div>
+      <div class="ow-case-block" style="border-bottom:none">
+        <span class="ow-case-label">What Changed</span>
+        ${impactHtml}
+      </div>
+    </div>`;
+  document.getElementById('ow-modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('ow-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.ow-card').forEach(card => {
+  card.addEventListener('click', () => openModal(+card.dataset.id));
+});
+document.getElementById('ow-modal-close').addEventListener('click', closeModal);
+document.getElementById('ow-modal-overlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.ow-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ow-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.ow-card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.category !== f);
+    });
+  });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 55);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
