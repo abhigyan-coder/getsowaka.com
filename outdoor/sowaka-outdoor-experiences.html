@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outdoor Experiences — Sowaka</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --primary: #1a1a1a;
+            --secondary: #666;
+            --light-bg: #f5f5f5;
+            --adventure-color: #c17a6b;
+            --sports-color: #5a8f7b;
+            --creative-color: #9b7ba8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--primary);
+            background: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--adventure-color);
+        }
+
+        nav .links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px !important;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 40px 60px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--adventure-color);
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons button {
+            padding: 12px 28px;
+            border-radius: 25px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-dark {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-light {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--adventure-color);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 80px 40px;
+            background: white;
+        }
+
+        .category-section.adventure { --color: var(--adventure-color); }
+        .category-section.sports { --color: var(--sports-color); }
+        .category-section.creative { --color: var(--creative-color); }
+
+        .category-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+            align-items: start;
+        }
+
+        .category-title-section h2 {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--color);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .category-title-section p {
+            font-size: 16px;
+            color: var(--primary);
+            line-height: 1.8;
+        }
+
+        .category-subtitle {
+            font-size: 16px;
+            color: var(--secondary);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            min-width: min-content;
+        }
+
+        /* Experience Card */
+        .experience-card {
+            flex: 0 0 380px;
+            background: black;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-top {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .experience-card:nth-child(1) .card-top { background: linear-gradient(135deg, #c17a6b 0%, #a85a4d 100%); }
+        .experience-card:nth-child(2) .card-top { background: linear-gradient(135deg, #e08b8e 0%, #c86a6d 100%); }
+        .experience-card:nth-child(3) .card-top { background: linear-gradient(135deg, #b4a5d4 0%, #9885bb 100%); }
+        .experience-card:nth-child(4) .card-top { background: linear-gradient(135deg, #5a8f7b 0%, #3d6d5f 100%); }
+        .experience-card:nth-child(5) .card-top { background: linear-gradient(135deg, #7ca589 0%, #5d8270 100%); }
+        .experience-card:nth-child(6) .card-top { background: linear-gradient(135deg, #a8a094 0%, #8b8375 100%); }
+        .experience-card:nth-child(7) .card-top { background: linear-gradient(135deg, #d4c5b4 0%, #b5a695 100%); }
+        .experience-card:nth-child(8) .card-top { background: linear-gradient(135deg, #9b7ba8 0%, #7d5d8a 100%); }
+        .experience-card:nth-child(9) .card-top { background: linear-gradient(135deg, #c9a8b5 0%, #ab8a97 100%); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-badge {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--adventure-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-duration {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-title-top {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .card-brand {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .card-video {
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .play-circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .play-circle::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 10px solid rgba(255, 255, 255, 0.5);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            margin-left: 3px;
+        }
+
+        .card-bottom {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px 16px 16px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .card-title-bottom {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .youtube-icon {
+            width: 16px;
+            height: 16px;
+            background: #FF0000;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 40px;
+            text-align: center;
+            background: var(--light-bg);
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            color: #ccc;
+        }
+
+        /* Contact Icons */
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-link {
+            background: #25D366;
+            color: white;
+            font-size: 28px;
+        }
+
+        .whatsapp-link:hover {
+            background: #20ba58;
+            transform: scale(1.1);
+        }
+
+        .email-link {
+            background: var(--adventure-color);
+            color: white;
+            font-size: 24px;
+        }
+
+        .email-link:hover {
+            background: #a85a4d;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .category-header {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .category-title-section h2 {
+                font-size: 48px;
+            }
+
+            .experience-card {
+                flex: 0 0 200px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">sowaka</div>
+        <div class="links">
+            <a href="#experiences">Experiences</a>
+            <a href="#contact" class="cta-button">WhatsApp us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>See what an <span class="highlight">outdoor experience</span> really feels like.</h1>
+            <p>Unforgettable adventures caught on camera, not pitched on a slide. Every reel below is a real team in action.</p>
+            <div class="hero-buttons">
+                <button class="btn-dark">Roll the adventures ↓</button>
+                <button class="btn-light">Book an experience</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Experiences Hosted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Experience Types</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="category-section adventure" id="experiences">
+        <div class="category-header">
+            <div class="category-title-section">
+                <h2>Our Experiences</h2>
+                <p>Unforgettable outdoor experiences designed to energize your team and build lasting connections.</p>
+            </div>
+            <div class="category-subtitle">Every reel below is a real team in action.</div>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">0:42</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Squid Games</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/KSXsCpSqUzY" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Squid Games</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">0:55</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Circuit Challenge</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/DSYanWdMcSA" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Circuit Challenge</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">1:08</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Aqua Therapy</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/jxs4wU3zrPA" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Aqua Therapy</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">1:21</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Sports Day</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/pzCXt62hAI4" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Sports Day</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">0:47</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Wellness Day</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-play-indicator">
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Wellness Day</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">0:33</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Escape Room</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-play-indicator">
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Escape Room</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">1:15</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Treasure Hunt</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-play-indicator">
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Treasure Hunt</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">1:08</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Offsite</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-video">
+                            <iframe src="https://www.youtube.com/embed/vJBERmf_0nM" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Offsite</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-top">
+                        <div class="card-header">
+                            <span class="card-badge">REEL</span>
+                            <span class="card-duration">0:50</span>
+                        </div>
+                        <div>
+                            <div class="card-title-top">Paintball</div>
+                            <div class="card-brand">sowaka</div>
+                        </div>
+                        <div class="card-play-indicator">
+                            <div class="play-circle"></div>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-title-bottom">Paintball</div>
+                        <div class="card-meta">
+                            <div class="youtube-icon">▶</div>
+                            <span>sowaka · session clip</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Want this for your team?</h2>
+        <p>Every experience is built for your team's specific context. We listen before we design.</p>
+        <div class="contact-icons">
+            <a href="https://wa.me/918473995034" class="contact-icon-link whatsapp-link" title="WhatsApp Tanvi">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.148.528 4.185 1.54 5.975L0 24l6.305-1.52C10.09 23.368 12.017 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.96c-1.841 0-3.649-.438-5.295-1.272l-.38-.19-3.933.948.966-3.537-.191-.382C1.456 15.649 1.04 13.863 1.04 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/>
+                    <path d="M16.67 13.25c-.32-.16-1.9-.938-2.2-1.042-.3-.1-.52-.16-.74.16-.22.32-.85 1.04-1.04 1.25-.19.22-.38.25-.7.09-.32-.16-1.35-.5-2.57-1.59-.95-.87-1.6-1.93-1.78-2.25-.18-.32-.02-.49.13-.65.13-.13.3-.34.45-.51.15-.17.2-.29.3-.49.1-.2.05-.37-.025-.52-.075-.16-.74-1.78-1.02-2.44-.27-.63-.53-.54-.74-.55-.19-.01-.4-.01-.61-.01-.22 0-.57.08-.87.41-.3.32-1.13 1.1-1.13 2.69 0 1.59 1.16 3.12 1.32 3.34.16.22 2.27 3.46 5.48 4.85.76.33 1.36.53 1.83.68.76.24 1.45.21 2.01.13.61-.09 1.9-.78 2.16-1.53.26-.75.26-1.39.18-1.53-.08-.13-.3-.21-.61-.35z"/>
+                </svg>
+            </a>
+            <a href="mailto:tanvi@sowaka.fit" class="contact-icon-link email-link" title="Email tanvi@sowaka.fit">
+                <span>✉</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-copyright">
+            © 2025 sowaka.fit — outdoor experiences that build teams that actually work.
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <iframe id="modalVideo" src="" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const videoIds = {
+            'Squid Games': 'KSXsCpSqUzY',
+            'Circuit Challenge': 'DSYanWdMcSA',
+            'Aqua Therapy': 'jxs4wU3zrPA',
+            'Sports Day': 'pzCXt62hAI4',
+            'Offsite': 'vJBERmf_0nM'
+        };
+
+        // Add click handlers to experience cards
+        document.querySelectorAll('.experience-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                const titleElement = this.querySelector('.card-title-bottom');
+                const title = titleElement ? titleElement.textContent : '';
+                const videoId = videoIds[title];
+
+                if (videoId) {
+                    openModal(videoId);
+                }
+            });
+        });
+
+        function openModal(videoId) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalVideo');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1`;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalVideo');
+            modal.classList.remove('active');
+            iframe.src = '';
+        }
+
+        // Close modal when clicking outside the video
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Add autoplay + loop to cards
+        document.querySelectorAll('.card-video iframe').forEach(iframe => {
+            const src = iframe.getAttribute('src');
+            if (src && !src.includes('autoplay')) {
+                iframe.setAttribute('src', src + '?autoplay=1&mute=1&loop=1&playlist=' + src.split('/embed/')[1]);
+            }
+        });
+    </script>
+</body>
+</html>
