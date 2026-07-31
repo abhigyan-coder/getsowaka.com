@@ -1,3 +1,9 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/Independence", "destination": "/independence_index.html" },
+    { "source": "/Independence/", "destination": "/independence_index.html" },
+    { "source": "/independence", "destination": "/independence_index.html" },
+    { "source": "/independence/", "destination": "/independence_index.html" }
+  ]
 }
